@@ -28,43 +28,19 @@ public enum RomeNum {
     }
 
     static String arabicToRome(int res){
-        String str = "";
-        while(res >= 100){
-            str += "C";
-            res -= 100;
+        String liter = "";
+        RomeNum[] x = RomeNum.values();
+        while(100 >= res && res > 0){
+            for (int i = x.length - 1; i >= 0 ; i--){
+                if(x[i].getNum() <= res){
+                    while(x[i].getNum() <= res){
+                        liter +=x[i].getName();
+                        res -= x[i].getNum();
+                    }
+                }
+                }
         }
-        while(res >= 90){
-            str += "XC";
-            res -= 90;
-        }
-        while(res >= 50){
-            str += "L";
-            res -= 50;
-        }
-        while(res >= 40){
-            str += "XL";
-            res -= 40;
-        }
-        while(res >= 10){
-            str += "X";
-            res -= 10;
-        }
-        while(res >= 9){
-            str += "IX";
-            res -= 9;
-        }
-        while(res >= 5){
-            str += "V";
-            res -= 5;
-        }
-        while(res >= 4){
-            str += "IV";
-            res -= 4;
-        }
-        while(res >= 1){
-            str += "I";
-            res -= 1;
-        }
-        return str;
+        return liter;
     }
 }
+    
